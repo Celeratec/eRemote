@@ -1,19 +1,19 @@
 [Desktop Entry]
-Name=RustDesk
+Name=eRemote
 GenericName=Remote Desktop
-Comment=Remote Desktop
-Exec=rustdesk %u
-Icon=rustdesk
+Comment=eRemote by Celeratec - Remote Desktop
+Exec=eremote %u
+Icon=eremote
 Terminal=false
 Type=Application
 StartupNotify=true
 Categories=Network;RemoteAccess;GTK;
-Keywords=internet;linux;dart;rust;remote-control;p2p;teamviewer;rust-lang;rdp;remote-desktop;vnc;
+Keywords=internet;linux;dart;rust;remote-control;p2p;celeratec;eremote;rdp;remote-desktop;vnc;msp;
 Actions=new-window;
-StartupWMClass=rustdesk
+StartupWMClass=eremote
 
 X-Desktop-File-Install-Version=0.23
 
 [Desktop Action new-window]
 Name=Open a New Window
-Exec=rustdesk %u
+Exec=eremote %u
