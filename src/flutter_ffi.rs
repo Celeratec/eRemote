@@ -11,7 +11,7 @@ use crate::{
     input::*,
     ui_interface::{self, *},
 };
-use flutter_rust_bridge::{IntoDart, IntoIntoDart, StreamSink, SyncReturn};
+use flutter_rust_bridge::{StreamSink, SyncReturn};
 #[cfg(feature = "plugin_framework")]
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 use hbb_common::allow_err;
@@ -96,24 +96,6 @@ pub enum EventToUI {
     Event(String),
     Rgba(usize),
     Texture(usize, bool), // (display, gpu_texture)
-}
-
-impl IntoDart for EventToUI {
-    fn into_dart(self) -> flutter_rust_bridge::support::DartAbi {
-        match self {
-            EventToUI::Event(s) => vec![0i32.into_dart(), s.into_dart()].into_dart(),
-            EventToUI::Rgba(ptr) => vec![1i32.into_dart(), (ptr as i64).into_dart()].into_dart(),
-            EventToUI::Texture(display, gpu) => {
-                vec![2i32.into_dart(), (display as i64).into_dart(), gpu.into_dart()].into_dart()
-            }
-        }
-    }
-}
-
-impl IntoIntoDart<EventToUI> for EventToUI {
-    fn into_into_dart(self) -> EventToUI {
-        self
-    }
 }
 
 pub fn host_stop_system_key_propagate(_stopped: bool) {
